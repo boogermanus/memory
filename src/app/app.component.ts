@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,7 +6,22 @@ import { Component } from '@angular/core';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations: []
+  animations: [
+    trigger('cardFlip', [
+      state('active', style({
+        transform: 'rotateY(180deg)'
+      })),
+      state('inactive', style({
+        transform: 'rotateY(0)'
+      })),
+      transition('active => inactive', [
+        animate('400ms')
+      ]),
+      transition('inactive => active', [
+        animate('200ms')
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   title = 'Memory';
