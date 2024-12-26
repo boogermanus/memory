@@ -26,8 +26,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Memory';
   isFlipped = false;
+  state = 'inactive'
 
   public toggleFlip() {
     this.isFlipped = !this.isFlipped;
+    this.state = this.isFlipped ? 'active' : 'inactive'
   }
 }
