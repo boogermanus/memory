@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
         animate('400ms')
       ]),
       transition('inactive => active', [
-        animate('200ms')
+        animate('400ms')
       ])
     ])
   ]

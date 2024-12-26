@@ -1,4 +1,5 @@
-<div class="card" [@cardFlip]="isFlipped ? 'active' : 'inactive'" (click)="toggleFlip()">
+<div class="card" [@cardFlip]="isFlipped ? 'active' : 'inactive'" (click)="toggleFlip()"
+  [style.background-color]="isFlipped ? 'green' : 'red'">
   <div class="face front">Front</div>
   <div class="face back">Back</div>
 </div>
