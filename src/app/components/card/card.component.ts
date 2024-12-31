@@ -26,11 +26,5 @@ import { Card } from '../../models/card';
   ]
 })
 export class CardComponent {
-  public isFlipped = false;
-  public state = 'inactive'
-  @Input() card!: Card;
-  public toggleFlip() {
-    this.isFlipped = !this.isFlipped;
-    this.state = this.isFlipped ? 'active' : 'inactive'
-  }
+  @Input() card = new Card();
 }
