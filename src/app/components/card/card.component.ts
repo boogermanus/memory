@@ -26,5 +26,5 @@ import { Card } from '../../models/card';
   ]
 })
 export class CardComponent {
-  @Input() card = new Card();
+  @Input() card!: Card;
 }
