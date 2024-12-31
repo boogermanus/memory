@@ -1,4 +1,4 @@
 <div class="card" [@cardFlip]="card.state" (click)="card.flip()">
-  <div class="face front">Front</div>
-  <div class="face back">Back</div>
+  <div class="face front">{{card.faceValue}}</div>
+  <div class="face back">{{card.backValue}}</div>
 </div>

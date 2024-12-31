@@ -21,4 +21,10 @@ describe('Card', () => {
     expect(card.state).toEqual('active');
   });
 
+  it('should flip the card to false', () => {
+    card.flip();
+    card.flip();
+    expect(card.isFlipped).toBeFalse();
+  });
+
 });
