@@ -27,4 +27,10 @@ import { Card } from '../../models/card';
 })
 export class CardComponent {
   @Input() card!: Card;
+
+  constructor() {
+    if(this.card === undefined) {
+      this.card = new Card();
+    }
+  }
 }

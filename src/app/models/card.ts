@@ -11,8 +11,8 @@ export class Card {
     }
 
     public state: string = 'inactive'
-    public faceValue: string = '';
-    public backValue: string = '';
+    public faceValue: string = 'Front';
+    public backValue: string = 'Back';
 
     public flip(): void {
 
