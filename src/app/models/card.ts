@@ -4,8 +4,9 @@ export class Card {
     public state: string = 'inactive'
     public faceValue: string = '';
     public backValue: string = '';
-    
+
     public flip() {
         this.isFlipped = !this.isFlipped;
+        this.state = this.isFlipped ? 'active' : 'inactive';
     }
 }
