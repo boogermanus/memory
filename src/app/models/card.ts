@@ -1,4 +1,5 @@
 export class Card {
+
     private isFlipped: boolean = false;
     public get IsFlipped(): boolean {
         return this.isFlipped;
@@ -8,11 +9,12 @@ export class Card {
     public get CanBeFlipped(): boolean {
         return this.canBeFlipped;
     }
+
     public state: string = 'inactive'
     public faceValue: string = '';
     public backValue: string = '';
 
-    public flip() {
+    public flip(): void {
         this.isFlipped = !this.isFlipped;
         this.state = this.isFlipped ? 'active' : 'inactive';
     }
