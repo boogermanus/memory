@@ -1,5 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-card',
@@ -27,7 +28,7 @@ import { Component } from '@angular/core';
 export class CardComponent {
   public isFlipped = false;
   public state = 'inactive'
-
+  @Input() card!: Card;
   public toggleFlip() {
     this.isFlipped = !this.isFlipped;
     this.state = this.isFlipped ? 'active' : 'inactive'
