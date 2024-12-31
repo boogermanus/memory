@@ -1,6 +1,13 @@
 export class Card {
-    public isFlipped: boolean = false;
-    public canBeFlipped: boolean = true;
+    private isFlipped: boolean = false;
+    public get IsFlipped(): boolean {
+        return this.isFlipped;
+    }
+
+    private canBeFlipped: boolean = true;
+    public get CanBeFlipped(): boolean {
+        return this.canBeFlipped;
+    }
     public state: string = 'inactive'
     public faceValue: string = '';
     public backValue: string = '';

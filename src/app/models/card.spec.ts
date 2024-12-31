@@ -13,7 +13,7 @@ describe('Card', () => {
 
   it('should flip the card to true', () => {
     card.flip();
-    expect(card.isFlipped).toBeTrue();
+    expect(card.IsFlipped).toBeTrue();
   });
 
   it('should set state to active when flipped', () => {
@@ -24,7 +24,7 @@ describe('Card', () => {
   it('should flip the card to false', () => {
     card.flip();
     card.flip();
-    expect(card.isFlipped).toBeFalse();
+    expect(card.IsFlipped).toBeFalse();
   });
 
 });
