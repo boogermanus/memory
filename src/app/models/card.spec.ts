@@ -27,4 +27,16 @@ describe('Card', () => {
     expect(card.IsFlipped).toBeFalse();
   });
 
+  it('should set cannot be flipped to true', () => {
+    card.cannotBeFlipped();
+    expect(card.CanBeFlipped).toBeFalse();
+  });
+
+  it('should not flip if it cannot be flipped', () => {
+    card.flip();
+    card.cannotBeFlipped();
+    card.flip();
+    expect(card.IsFlipped).toBeTrue();
+  });
+
 });

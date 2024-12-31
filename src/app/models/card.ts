@@ -15,7 +15,16 @@ export class Card {
     public backValue: string = '';
 
     public flip(): void {
+
+        if(!this.canBeFlipped) {
+            return;
+        }
+        
         this.isFlipped = !this.isFlipped;
         this.state = this.isFlipped ? 'active' : 'inactive';
+    }
+
+    public cannotBeFlipped(): void {
+        this.canBeFlipped = false;
     }
 }
