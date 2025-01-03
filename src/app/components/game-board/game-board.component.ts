@@ -6,7 +6,6 @@ import { CardComponent } from "../card/card.component";
   selector: 'app-game-board',
   standalone: true,
   imports: [
-    MatGridListModule,
     CardComponent
 ],
   templateUrl: './game-board.component.html',
