@@ -4,5 +4,5 @@ import { GameBoardComponent } from './components/game-board/game-board.component
 
 export const routes: Routes = [
     { path: 'settings', component: GameSettingsComponent },
-    { path: 'game', component: GameBoardComponent }
+    { path: 'board', component: GameBoardComponent }
 ];
