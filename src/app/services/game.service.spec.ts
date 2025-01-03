@@ -46,9 +46,8 @@ describe('GameService', () => {
 
   it('should still have 16 cards after shuffle is called', () => {
     service.initGame(new GameSettings(4));
-    const unshuffledCards = service.Cards;
     service.shuffle();
     const shuffledCards = service.Cards;
-    expect(shuffledCards.length).toEqual(16);
+    expect(shuffledCards.length).toEqual(Math.pow(service.GameSettings.BoardSize, 2));
   });
 });
