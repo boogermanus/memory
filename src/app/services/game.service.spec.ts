@@ -34,4 +34,13 @@ describe('GameService', () => {
     service.initGame(settings)
     expect(service.Cards.length).toEqual(16);
   });
+
+  it('should shuffle cards if initGame is', () => {
+    service.initGame(new GameSettings(4));
+    let unshuffledCards = service.Cards;
+    service.shuffle();
+    let shuffledCards = service.Cards;
+
+    expect(unshuffledCards).not.toEqual(shuffledCards);
+  })
 });
