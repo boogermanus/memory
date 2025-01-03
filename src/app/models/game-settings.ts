@@ -3,4 +3,8 @@ export class GameSettings {
     public get BoardSize(): number {
         return this.boardSize;
     }
+
+    constructor(boardSize: number) {
+        this.boardSize = boardSize;
+    }
 }

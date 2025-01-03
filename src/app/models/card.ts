@@ -1,5 +1,7 @@
 export class Card {
 
+    public Id: number = 0 ;
+
     private isFlipped: boolean = false;
     public get IsFlipped(): boolean {
         return this.isFlipped;
@@ -8,6 +10,11 @@ export class Card {
     private canBeFlipped: boolean = true;
     public get CanBeFlipped(): boolean {
         return this.canBeFlipped;
+    }
+    constructor(id?: number, face?: string, back?:string) {
+        this.Id = id ?? 0;
+        this.faceValue = face ?? '';
+        this.backValue = back ?? '';
     }
 
     public state: string = 'inactive'

@@ -17,4 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class GameSettingsComponent {
   public boardSize: number = 0;
+
+  public startGame(): void {
+    
+  }
 }
