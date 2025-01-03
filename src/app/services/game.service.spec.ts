@@ -23,7 +23,7 @@ describe('GameService', () => {
     expect(() => service.initGame(new GameSettings(0))).toThrowError(service.SIZE_ERROR);
   });
 
-  it('should initialize the cards if initGame is called',() => {
+  it('should initialize the cards if initGame is called', () => {
     let settings = new GameSettings(4);
     service.initGame(settings)
     expect(service.Cards).not.toEqual([]);
@@ -37,10 +37,18 @@ describe('GameService', () => {
 
   it('should shuffle cards if initGame is', () => {
     service.initGame(new GameSettings(4));
-    let unshuffledCards = service.Cards;
+    const unshuffledCards = service.Cards;
     service.shuffle();
-    let shuffledCards = service.Cards;
+    const shuffledCards = service.Cards;
 
     expect(unshuffledCards).not.toEqual(shuffledCards);
-  })
+  });
+
+  it('should still have 16 cards after shuffle is called', () => {
+    service.initGame(new GameSettings(4));
+    const unshuffledCards = service.Cards;
+    service.shuffle();
+    const shuffledCards = service.Cards;
+    expect(shuffledCards.length).toEqual(16);
+  });
 });

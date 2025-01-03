@@ -52,12 +52,6 @@ export class GameService {
     let shuffling = true;
 
     do {
-      // if length is zero push last card and stop
-      if(unshuffledCards.length === 0) {
-        shuffledCards.push(unshuffledCards[0]);
-        shuffling = false;
-        break;
-      }
       // find the index we want to shuffle
       const index = Math.floor(Math.random() * unshuffledCards.length);
       const cardToShuffle = unshuffledCards[index];
@@ -65,8 +59,13 @@ export class GameService {
       // splice it out
       this.cards.splice(index, 1);
 
-      //add it
+      // add it to shuffled
       shuffledCards.push(cardToShuffle);
+
+      if(unshuffledCards.length === 0) {
+        shuffling = false;
+      }
+      
     } while(shuffling)
 
     this.cards = shuffledCards;
