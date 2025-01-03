@@ -36,12 +36,17 @@ export class GameService {
   }
 
   private initCards(): void {
-    const numberOfCards = this.gameSettings.BoardSize * this.gameSettings.BoardSize;
-    let cardFace = this.gameSettings.BoardSize;
-    this.cards = new Array<Card>(numberOfCards);
-    for (let i = 0; i < numberOfCards; i++) {
-      this.cards.push(new Card(i, cardFace.toString()));
-      this.cards.push(new Card(i + 1, cardFace.toString()));
+    const boardSize = this.gameSettings.BoardSize * 2;
+    let cardFace = 1;
+    let cardId = 0;
+    for (let i = 0; i < boardSize; i++) {
+      this.cards.push(new Card(cardId++, cardFace.toString()));
+      this.cards.push(new Card(cardId, cardFace.toString()));
+      cardFace++;
     }
+  }
+
+  public shuffle(): void {
+
   }
 }

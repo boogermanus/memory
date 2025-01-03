@@ -27,5 +27,11 @@ describe('GameService', () => {
     let settings = new GameSettings(4);
     service.initGame(settings)
     expect(service.Cards).not.toEqual([]);
-  })
+  });
+
+  it('should have 16 cards after initGame is called', () => {
+    let settings = new GameSettings(4);
+    service.initGame(settings)
+    expect(service.Cards.length).toEqual(16);
+  });
 });
