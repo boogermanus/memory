@@ -6,7 +6,9 @@
         <div class="d-flex flex-row">
             <mat-form-field style="width: 100%">
                 <mat-label>Board Size</mat-label>
-                <mat-select>
+                <mat-select [(value)]="boardSize">
+                    <mat-option value="4">4 X 4</mat-option>
+                    <mat-option value="6">6 X 6</mat-option>
                     <mat-option value="8">8 X 8</mat-option>
                 </mat-select>
             </mat-form-field>

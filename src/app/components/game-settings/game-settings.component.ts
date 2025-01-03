@@ -16,5 +16,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './game-settings.component.css'
 })
 export class GameSettingsComponent {
-
+  public boardSize: number = 0;
 }
