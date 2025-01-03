@@ -28,8 +28,8 @@ export class GameService {
   }
 
   private validateGameSettings(settings: GameSettings) {
-    
-    if(settings.BoardSize === 0) {
+
+    if (settings.BoardSize === 0) {
       throw new Error(this.SIZE_ERROR);
     }
 
@@ -39,9 +39,9 @@ export class GameService {
     const numberOfCards = this.gameSettings.BoardSize * this.gameSettings.BoardSize;
     let cardFace = this.gameSettings.BoardSize;
     this.cards = new Array<Card>(numberOfCards);
-    for(let i = 0; i < numberOfCards; i++) {
-      this.cards.push(new Card(i,cardFace.toString()));
-      this.cards.push(new Card(i+1,cardFace.toString()));
+    for (let i = 0; i < numberOfCards; i++) {
+      this.cards.push(new Card(i, cardFace.toString()));
+      this.cards.push(new Card(i + 1, cardFace.toString()));
     }
   }
 }
