@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Card } from '../../models/card';
 
 describe('CardComponent', () => {
@@ -10,7 +10,7 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardComponent, BrowserAnimationsModule]
+      imports: [CardComponent, NoopAnimationsModule]
     })
     .compileComponents();
 
