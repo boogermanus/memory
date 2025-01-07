@@ -1,9 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { GameSettingsComponent } from './game-settings.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GameService } from '../../services/game.service';
-import { GameSettings } from '../../models/game-settings';
+
 
 describe('GameSettingsComponent', () => {
   let component: GameSettingsComponent;
@@ -14,7 +13,7 @@ describe('GameSettingsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         GameSettingsComponent,
-        NoopAnimationsModule
+        NoopAnimationsModule,
       ]
     })
     .compileComponents();
@@ -41,6 +40,6 @@ describe('GameSettingsComponent', () => {
     component.boardSize = 4;
     component.startGame();
     expect(gameSerivce.shuffle).toHaveBeenCalled();
-  })
+  });
 
 });
