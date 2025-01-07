@@ -1,7 +1,7 @@
 export class Card {
 
     private readonly DEFAULT_FRONT: string = 'Front';
-    private readonly DEFAULT_BACK: string = 'Back'
+    private readonly DEFAULT_BACK: string = ''
     public Id: number = 0 ;
 
     private isFlipped: boolean = false;
