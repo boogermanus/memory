@@ -30,10 +30,7 @@ export class GameSettingsComponent {
   public startGame(): void {
     this.gameService.initGame(new GameSettings(this.boardSize));
     this.gameService.shuffle();
-  }
-  
-  public goToBoard(): void {
-    this.startGame();
     this.router.navigate(['board']);
   }
+
 }

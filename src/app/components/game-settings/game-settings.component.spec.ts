@@ -2,18 +2,24 @@ import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { GameSettingsComponent } from './game-settings.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GameService } from '../../services/game.service';
+import { Router } from '@angular/router';
 
 
 describe('GameSettingsComponent', () => {
   let component: GameSettingsComponent;
   let fixture: ComponentFixture<GameSettingsComponent>;
   let gameSerivce: GameService
-
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  }
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         GameSettingsComponent,
         NoopAnimationsModule,
+      ],
+      providers: [
+        {provide: Router, useValue: mockRouter}
       ]
     })
     .compileComponents();
