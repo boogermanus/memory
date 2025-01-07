@@ -17,6 +17,9 @@ export class GameService {
   public get GameSettings(): GameSettings {
     return this.gameSettings;
   }
+  public get BoardSize(): number {
+    return this.gameSettings.BoardSize;
+  }
   constructor() { }
 
   public initGame(settings: GameSettings) {
