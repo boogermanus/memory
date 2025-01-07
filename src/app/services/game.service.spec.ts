@@ -61,7 +61,7 @@ describe('GameService', () => {
 
   it('should not throw on flipCard', () => {
     let card = new Card(0, '1');
-    expect(service.flipCard(card));
+    expect(() => service.flipCard(card)).not.toThrow();
   });
 
   it('should not match cards if card faces to not match', () => {
@@ -72,5 +72,15 @@ describe('GameService', () => {
     service.flipCard(card2);
 
     expect(service.MatchCount()).toBe(0);
+  });
+
+  it('should match card if card faces match', () => {
+    let card1 = new Card(0, '1');
+    let card2 = new Card(1, '1');
+
+    service.flipCard(card1);
+    service.flipCard(card2);
+
+    expect(service.MatchCount()).toBe(1)
   })
 });

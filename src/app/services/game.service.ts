@@ -95,12 +95,16 @@ export class GameService {
 
     if(this.secondCard === undefined) {
       this.secondCard = card;
-      return;
     }
 
     if(this.firstCard.faceValue !== this.secondCard.faceValue) {
       this.firstCard = undefined;
       this.secondCard = undefined;
+      return;
+    }
+
+    if(this.firstCard.faceValue === this.secondCard.faceValue) {
+      this.matchCount.set(this.matchCount() + 1);
       return;
     }
   }
