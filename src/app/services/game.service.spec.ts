@@ -7,7 +7,8 @@ describe('GameService', () => {
   let service: GameService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+    });
     service = TestBed.inject(GameService);
   });
 
@@ -49,5 +50,11 @@ describe('GameService', () => {
     service.shuffle();
     const shuffledCards = service.Cards;
     expect(shuffledCards.length).toEqual(Math.pow(service.GameSettings.BoardSize, 2));
+  });
+
+  it('should set GameStarted to true', () => {
+    service.initGame(new GameSettings(4));
+
+    expect(service.GameStarted()).toBeTrue();
   });
 });

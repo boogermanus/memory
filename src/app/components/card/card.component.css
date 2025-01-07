@@ -19,4 +19,5 @@
 
 .front {
     transform: rotateY(180deg);
+    font-size: x-large;
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { GameSettings } from '../models/game-settings';
 import { Card } from '../models/card';
 
@@ -17,9 +17,14 @@ export class GameService {
   public get GameSettings(): GameSettings {
     return this.gameSettings;
   }
+
   public get BoardSize(): number {
     return this.gameSettings.BoardSize;
   }
+
+  private gameStarted = signal(false);
+  public readonly GameStarted = this.gameStarted.asReadonly();
+
   constructor() { }
 
   public initGame(settings: GameSettings) {
@@ -27,6 +32,7 @@ export class GameService {
     this.validateGameSettings(settings);
     this.gameSettings = settings;
     this.initCards();
+    this.gameStarted.set(true);
 
   }
 
