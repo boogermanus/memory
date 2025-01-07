@@ -22,8 +22,8 @@ export class GameBoardComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.gameService.initGame(new GameSettings(4))
-    this.gameService.shuffle();
+    // this.gameService.initGame(new GameSettings(4))
+    // this.gameService.shuffle();
     let cards = this.gameService.Cards;
     for(let row = 0; row < this.gameService.BoardSize; row++) {
       this.cards.push(cards.splice(0, this.gameService.BoardSize));

@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { GameService } from '../../services/game.service';
 import { GameSettings } from '../../models/game-settings';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-game-settings',
   standalone: true,
@@ -20,12 +21,15 @@ import { GameSettings } from '../../models/game-settings';
 export class GameSettingsComponent {
   public boardSize: number = 0;
 
-  constructor(private readonly gameService: GameService) {
+  constructor(
+    private readonly gameService: GameService,
+    private readonly router: Router) {
 
   }
 
   public startGame(): void {
     this.gameService.initGame(new GameSettings(this.boardSize));
     this.gameService.shuffle();
+    this.router.navigate(['board']);
   }
 }
