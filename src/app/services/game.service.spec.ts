@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { GameService } from './game.service';
 import { GameSettings } from '../models/game-settings';
+import { Card } from '../models/card';
 
 describe('GameService', () => {
   let service: GameService;
@@ -57,4 +58,19 @@ describe('GameService', () => {
 
     expect(service.GameStarted()).toBeTrue();
   });
+
+  it('should not throw on flipCard', () => {
+    let card = new Card(0, '1');
+    expect(service.flipCard(card));
+  });
+
+  it('should not match cards if card faces to not match', () => {
+    let card1 = new Card(0, '1');
+    let card2 = new Card(1, '2');
+
+    service.flipCard(card1);
+    service.flipCard(card2);
+
+    expect(service.MatchCount()).toBe(0);
+  })
 });

@@ -25,6 +25,12 @@ export class GameService {
   private gameStarted = signal(false);
   public readonly GameStarted = this.gameStarted.asReadonly();
 
+  private firstCard?: Card
+  private secondCard?: Card
+
+  private matchCount = signal(0);
+  public readonly MatchCount = this.matchCount.asReadonly();
+
   constructor() { }
 
   public initGame(settings: GameSettings) {
@@ -78,5 +84,24 @@ export class GameService {
     } while(shuffling)
 
     this.cards = shuffledCards;
+  }
+
+  public flipCard(card: Card): void {
+    
+    if(this.firstCard === undefined) {
+      this.firstCard = card;
+      return;
+    }
+
+    if(this.secondCard === undefined) {
+      this.secondCard = card;
+      return;
+    }
+
+    if(this.firstCard.faceValue !== this.secondCard.faceValue) {
+      this.firstCard = undefined;
+      this.secondCard = undefined;
+      return;
+    }
   }
 }
