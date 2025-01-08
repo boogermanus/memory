@@ -62,10 +62,10 @@ export class GameService {
   }
 
   private initCards(): void {
-    const boardSize = this.gameSettings.BoardSize * 2;
+    const numberOfCards = Math.pow(this.BoardSize, 2);
     let cardFace = 1;
     let cardId = 0;
-    for (let i = 0; i < boardSize; i++) {
+    for (let i = 0; i < (numberOfCards / 2); i++) {
       this.cards.push(new Card(cardId++, cardFace.toString()));
       this.cards.push(new Card(cardId, cardFace.toString()));
       cardFace++;
@@ -101,19 +101,24 @@ export class GameService {
 
     if (this.firstCard === undefined) {
       this.firstCard = card;
+      this.firstCard.toggleCanBeFlipped();
       return;
     }
 
-    if (this.secondCard === undefined) {
+    if (this.secondCard === undefined && this.firstCard.Id !== card.Id) {
       this.secondCard = card;
+    }
+    else {
+      return;
     }
 
     this.attemptsCount.set(this.attemptsCount() + 1);
-    if (this.firstCard.faceValue !== this.secondCard.faceValue) {
+    if (this.firstCard.faceValue !== this.secondCard?.faceValue) {
       this.canFlipCards = false;
       this.subscription.unsubscribe();
       this.subscription = this.timer.subscribe({
         next: () => {
+          this.firstCard?.toggleCanBeFlipped();
           this.firstCard?.flip();
           this.secondCard?.flip();
           this.firstCard = undefined;

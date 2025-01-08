@@ -13,6 +13,11 @@ export class Card {
     public get CanBeFlipped(): boolean {
         return this.canBeFlipped;
     }
+
+    private hasMatch: boolean = false;
+    public get HasMatch(): boolean {
+        return this.hasMatch;
+    }
     constructor(id?: number, face?: string, back?:string) {
         this.Id = id ?? 0;
         this.faceValue = face ?? this.DEFAULT_FRONT;
@@ -26,7 +31,7 @@ export class Card {
 
     public flip(): void {
 
-        if(!this.canBeFlipped) {
+        if(!this.canBeFlipped || this.hasMatch) {
             return;
         }
         
@@ -34,8 +39,13 @@ export class Card {
         this.state = this.isFlipped ? 'active' : 'inactive';
     }
 
+    public toggleCanBeFlipped(): void {
+        this.canBeFlipped = !this.canBeFlipped;
+    }
+
     public cannotBeFlipped(): void {
         this.canBeFlipped = false;
+        this.hasMatch = true;
         this.style = 'white';
     }
 }
