@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { GameSettings } from '../models/game-settings';
 import { Card } from '../models/card';
+import { Subscription, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,12 @@ export class GameService {
   private matchCount = signal(0);
   public readonly MatchCount = this.matchCount.asReadonly();
 
-  constructor() { }
+  private timer = timer(1500);
+  private subscription: Subscription = new Subscription();
+
+  constructor() {
+
+  }
 
   public initGame(settings: GameSettings) {
 
@@ -77,38 +83,46 @@ export class GameService {
       // add it to shuffled
       shuffledCards.push(cardToShuffle);
 
-      if(unshuffledCards.length === 0) {
+      if (unshuffledCards.length === 0) {
         shuffling = false;
       }
-      
-    } while(shuffling)
+
+    } while (shuffling)
 
     this.cards = shuffledCards;
   }
 
   public flipCard(card: Card): void {
-    
-    if(this.firstCard === undefined) {
+
+    if (this.firstCard === undefined) {
       this.firstCard = card;
       return;
     }
 
-    if(this.secondCard === undefined) {
+    if (this.secondCard === undefined) {
       this.secondCard = card;
     }
 
-    if(this.firstCard.faceValue !== this.secondCard.faceValue) {
-      this.firstCard.flip();
-      this.secondCard.flip();
-      this.firstCard = undefined;
-      this.secondCard = undefined;
+    if (this.firstCard.faceValue !== this.secondCard.faceValue) {
+      this.subscription.unsubscribe();
+      this.subscription = this.timer.subscribe({
+        next: () => {
+          this.firstCard?.flip();
+          this.secondCard?.flip();
+          this.firstCard = undefined;
+          this.secondCard = undefined;
+        }
+      })
+
       return;
     }
 
-    if(this.firstCard.faceValue === this.secondCard.faceValue) {
+    if (this.firstCard.faceValue === this.secondCard.faceValue) {
       this.matchCount.set(this.matchCount() + 1);
       this.firstCard.cannotBeFlipped();
       this.secondCard.cannotBeFlipped();
+      this.firstCard = undefined;
+      this.secondCard = undefined;
       return;
     }
   }

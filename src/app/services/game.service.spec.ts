@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { GameService } from './game.service';
 import { GameSettings } from '../models/game-settings';
@@ -94,7 +94,8 @@ describe('GameService', () => {
     expect(card1.CanBeFlipped && card2.CanBeFlipped).toBeFalse();
   });
 
-  it('should flip cards back if they do not match', () => {
+  it('should flip cards back if they do not match', fakeAsync(() => {
+
     let card1 = new Card(0, '1');
     let card2 = new Card(1, '2');
     card1.flip();
@@ -102,7 +103,9 @@ describe('GameService', () => {
     card2.flip();
     service.flipCard(card2);
 
+    setTimeout(() => {}, 3000);
+    tick(3000);
+        
     expect(card1.IsFlipped && card2.IsFlipped).toBeFalse();
-
-  })
+  }));
 });
