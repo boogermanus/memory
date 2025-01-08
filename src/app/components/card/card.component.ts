@@ -1,6 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-card',
@@ -28,9 +29,14 @@ import { Card } from '../../models/card';
 export class CardComponent {
   @Input() card!: Card;
 
-  constructor() {
+  constructor(private readonly gameService: GameService) {
     if(this.card === undefined) {
       this.card = new Card();
     }
+  }
+
+  public onClick(): void {
+    this.card.flip();
+    this.gameService.flipCard(this.card);
   }
 }
