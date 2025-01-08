@@ -82,5 +82,15 @@ describe('GameService', () => {
     service.flipCard(card2);
 
     expect(service.MatchCount()).toBe(1)
-  })
+  });
+
+  it('should set the cards as cannot be flipped if they match', () => {
+    let card1 = new Card(0, '1');
+    let card2 = new Card(1, '1');
+
+    service.flipCard(card1);
+    service.flipCard(card2);
+
+    expect(card1.CanBeFlipped && card2.CanBeFlipped).toBeFalse();
+  });
 });

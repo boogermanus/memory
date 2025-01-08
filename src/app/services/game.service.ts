@@ -105,6 +105,8 @@ export class GameService {
 
     if(this.firstCard.faceValue === this.secondCard.faceValue) {
       this.matchCount.set(this.matchCount() + 1);
+      this.firstCard.cannotBeFlipped();
+      this.secondCard.cannotBeFlipped();
       return;
     }
   }
