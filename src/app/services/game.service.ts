@@ -23,8 +23,8 @@ export class GameService {
     return this.gameSettings.BoardSize;
   }
 
-  private gameStarted = signal(false);
-  public readonly GameStarted = this.gameStarted.asReadonly();
+  private gameRunning = signal(false);
+  public readonly GameRunning = this.gameRunning.asReadonly();
 
   private firstCard?: Card
   private secondCard?: Card
@@ -49,7 +49,7 @@ export class GameService {
     this.validateGameSettings(settings);
     this.gameSettings = settings;
     this.initCards();
-    this.gameStarted.set(true);
+    this.gameRunning.set(true);
 
   }
 

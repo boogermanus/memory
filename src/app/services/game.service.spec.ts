@@ -53,10 +53,10 @@ describe('GameService', () => {
     expect(shuffledCards.length).toEqual(Math.pow(service.GameSettings.BoardSize, 2));
   });
 
-  it('should set GameStarted to true', () => {
+  it('should set GameRunning to true', () => {
     service.initGame(new GameSettings(4));
 
-    expect(service.GameStarted()).toBeTrue();
+    expect(service.GameRunning()).toBeTrue();
   });
 
   it('should not throw on flipCard', () => {
