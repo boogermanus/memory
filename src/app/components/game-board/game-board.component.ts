@@ -14,7 +14,6 @@ import { Card } from '../../models/card';
 })
 export class GameBoardComponent implements OnInit {
   public cards: Card[][] = [[]];
-  public rows: number[] = [];
   public matches!: Signal<number>;
   public attempts!: Signal<number>;
 
