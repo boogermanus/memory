@@ -93,4 +93,16 @@ describe('GameService', () => {
 
     expect(card1.CanBeFlipped && card2.CanBeFlipped).toBeFalse();
   });
+
+  it('should flip cards back if they do not match', () => {
+    let card1 = new Card(0, '1');
+    let card2 = new Card(1, '2');
+    card1.flip();
+    service.flipCard(card1);
+    card2.flip();
+    service.flipCard(card2);
+
+    expect(card1.IsFlipped && card2.IsFlipped).toBeFalse();
+
+  })
 });

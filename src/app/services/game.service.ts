@@ -98,6 +98,8 @@ export class GameService {
     }
 
     if(this.firstCard.faceValue !== this.secondCard.faceValue) {
+      this.firstCard.flip();
+      this.secondCard.flip();
       this.firstCard = undefined;
       this.secondCard = undefined;
       return;
