@@ -118,12 +118,7 @@ export class GameService {
       this.flipTimerSubscription.unsubscribe();
       this.flipTimerSubscription = this.flipTimer.subscribe({
         next: () => {
-          this.firstCard?.toggleCanBeFlipped();
-          this.firstCard?.flip();
-          this.secondCard?.flip();
-          this.firstCard = undefined;
-          this.secondCard = undefined;
-          this.canFlipCards = true;
+          this.handleMismatch();
         }
       })
 
@@ -131,12 +126,25 @@ export class GameService {
     }
 
     if (this.firstCard.faceValue === this.secondCard.faceValue) {
-      this.matchCount.set(this.matchCount() + 1);
-      this.firstCard.cannotBeFlipped();
-      this.secondCard.cannotBeFlipped();
-      this.firstCard = undefined;
-      this.secondCard = undefined;
+      this.handleMatch();
       return;
     }
+  }
+
+  private handleMismatch() {
+    this.firstCard?.toggleCanBeFlipped();
+    this.firstCard?.flip();
+    this.secondCard?.flip();
+    this.firstCard = undefined;
+    this.secondCard = undefined;
+    this.canFlipCards = true;
+  }
+
+  private handleMatch() {
+    this.matchCount.set(this.matchCount() + 1);
+    this.firstCard?.cannotBeFlipped();
+    this.secondCard?.cannotBeFlipped();
+    this.firstCard = undefined;
+    this.secondCard = undefined;
   }
 }
