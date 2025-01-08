@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal } from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { GameService } from '../../services/game.service';
 import { Card } from '../../models/card';
-import { GameSettings } from '../../models/game-settings';
 
 @Component({
   selector: 'app-game-board',
@@ -16,9 +15,13 @@ import { GameSettings } from '../../models/game-settings';
 export class GameBoardComponent implements OnInit {
   public cards: Card[][] = [[]];
   public rows: number[] = [];
+  public matches!: Signal<number>;
+  public attempts!: Signal<number>;
 
   // need to have cards here
   constructor(private readonly gameService: GameService) {
+    this.matches = this.gameService.MatchCount;
+    this.attempts = this.gameService.AttemptsCount;
   }
 
   public ngOnInit(): void {
