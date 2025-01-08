@@ -32,8 +32,8 @@ export class GameService {
   private matchCount = signal(0);
   public readonly MatchCount = this.matchCount.asReadonly();
 
-  private timer = timer(1500);
-  private subscription: Subscription = new Subscription();
+  private flipTimer = timer(1500);
+  private flipTimerSubscription: Subscription = new Subscription();
 
   public canFlipCards: boolean = true;
 
@@ -115,8 +115,8 @@ export class GameService {
     this.attemptsCount.set(this.attemptsCount() + 1);
     if (this.firstCard.faceValue !== this.secondCard?.faceValue) {
       this.canFlipCards = false;
-      this.subscription.unsubscribe();
-      this.subscription = this.timer.subscribe({
+      this.flipTimerSubscription.unsubscribe();
+      this.flipTimerSubscription = this.flipTimer.subscribe({
         next: () => {
           this.firstCard?.toggleCanBeFlipped();
           this.firstCard?.flip();
