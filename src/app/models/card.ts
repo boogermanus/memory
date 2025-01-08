@@ -22,6 +22,7 @@ export class Card {
     public state: string = 'inactive'
     public faceValue: string = 'Front';
     public backValue: string = 'Back';
+    public style: string = '';
 
     public flip(): void {
 
@@ -35,5 +36,6 @@ export class Card {
 
     public cannotBeFlipped(): void {
         this.canBeFlipped = false;
+        this.style = 'white';
     }
 }

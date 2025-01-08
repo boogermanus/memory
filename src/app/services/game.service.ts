@@ -35,6 +35,8 @@ export class GameService {
   private timer = timer(1500);
   private subscription: Subscription = new Subscription();
 
+  public canFlipCards: boolean = true;
+
   constructor() {
 
   }
@@ -104,6 +106,7 @@ export class GameService {
     }
 
     if (this.firstCard.faceValue !== this.secondCard.faceValue) {
+      this.canFlipCards = false;
       this.subscription.unsubscribe();
       this.subscription = this.timer.subscribe({
         next: () => {
@@ -111,6 +114,7 @@ export class GameService {
           this.secondCard?.flip();
           this.firstCard = undefined;
           this.secondCard = undefined;
+          this.canFlipCards = true;
         }
       })
 

@@ -30,13 +30,15 @@ export class CardComponent {
   @Input() card!: Card;
 
   constructor(private readonly gameService: GameService) {
-    if(this.card === undefined) {
+    if (this.card === undefined) {
       this.card = new Card();
     }
   }
 
   public onClick(): void {
-    this.card.flip();
-    this.gameService.flipCard(this.card);
+    if (this.gameService.canFlipCards) {
+      this.card.flip();
+      this.gameService.flipCard(this.card);
+    }
   }
 }
