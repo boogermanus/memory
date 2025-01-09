@@ -3,9 +3,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { GameService } from '../../services/game.service';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { GameSettings } from '../../models/game-settings';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-game-settings',
   standalone: true,
@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
     MatCardModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   templateUrl: './game-settings.component.html',
   styleUrl: './game-settings.component.css'
@@ -21,16 +22,12 @@ import { Router } from '@angular/router';
 export class GameSettingsComponent {
   public boardSize: number = 0;
 
-  constructor(
-    private readonly gameService: GameService,
-    private readonly router: Router) {
+  constructor(private readonly dialogRef: MatDialogRef<GameSettingsComponent>) {
 
   }
 
   public startGame(): void {
-    this.gameService.initGame(new GameSettings(this.boardSize));
-    this.gameService.shuffle();
-    this.router.navigate(['board']);
+    this.dialogRef.close({boardSize: this.boardSize});
   }
 
 }
