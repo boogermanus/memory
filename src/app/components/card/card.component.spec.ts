@@ -12,9 +12,11 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardComponent, NoopAnimationsModule]
-    })
-    .compileComponents();
+      imports: [
+        CardComponent,
+        NoopAnimationsModule
+      ]
+    }).compileComponents();
 
     service = TestBed.inject(GameService);
     fixture = TestBed.createComponent(CardComponent);
@@ -22,11 +24,11 @@ describe('CardComponent', () => {
 
     // fixed error in testing; watch out for components and null input!
     component.card = new Card();
-    
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {;
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 

@@ -9,8 +9,8 @@ describe('GameBoardComponent', () => {
   let fixture: ComponentFixture<GameBoardComponent>;
   let mockDialog = {
     open: jasmine.createSpy('open')
-    .and
-    .returnValue({ afterClosed: () => of('4') } as MatDialogRef<GameSettingsComponent>),
+      .and
+      .returnValue({ afterClosed: () => of('4') } as MatDialogRef<GameSettingsComponent>),
   }
 
   beforeEach(async () => {

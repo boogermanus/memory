@@ -21,14 +21,14 @@ import { GameSettings } from '../../models/game-settings';
 })
 export class GameSettingsComponent {
   public boardSize: number = 0;
-  public boardSizes: number[] = [2,3,4,5,6,7,8]
+  public boardSizes: number[] = [2, 3, 4, 5, 6, 7, 8]
 
   constructor(private readonly dialogRef: MatDialogRef<GameSettingsComponent>) {
 
   }
 
   public startGame(): void {
-    this.dialogRef.close({boardSize: this.boardSize});
+    this.dialogRef.close({ boardSize: this.boardSize });
   }
 
 }
