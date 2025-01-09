@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardComponent } from "./components/card/card.component";
-import { RouterOutlet } from '@angular/router';
+import { GameBoardComponent } from "./components/game-board/game-board.component";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,8 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   imports: [
-    RouterOutlet
-  ]
+    GameBoardComponent
+]
 })
 export class AppComponent {
   title = 'Memory';

@@ -18,10 +18,10 @@ import { GameService } from '../../services/game.service';
         transform: 'rotateY(0)'
       })),
       transition('active => inactive', [
-        animate('400ms')
+        animate('250ms')
       ]),
       transition('inactive => active', [
-        animate('400ms')
+        animate('250ms')
       ])
     ])
   ]
