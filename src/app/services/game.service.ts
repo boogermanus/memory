@@ -26,6 +26,9 @@ export class GameService {
   private gameRunning = signal(false);
   public readonly GameRunning = this.gameRunning.asReadonly();
 
+  private gameOver = signal(false);
+  public readonly GameOver = this.gameOver.asReadonly();
+
   private firstCard?: Card
   private secondCard?: Card
 
@@ -146,5 +149,9 @@ export class GameService {
     this.secondCard?.cannotBeFlipped();
     this.firstCard = undefined;
     this.secondCard = undefined;
+  }
+
+  private signalIfGameOver(): void {
+    
   }
 }
