@@ -150,6 +150,8 @@ export class GameService {
     this.firstCard = undefined;
     this.secondCard = undefined;
 
+    // this is not working correctly
+    // may need to clear stuff out
     if (this.matchCount() === this.BoardSize) {
       this.gameOver.set(true);
       this.gameRunning.set(false);
