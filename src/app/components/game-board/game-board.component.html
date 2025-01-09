@@ -5,11 +5,11 @@
 <div class="mt-4">
     <table>
         @for(cardRow of cards; track cardRow) {
-            <tr>
-                @for(card of cardRow; track card) {
-                    <td><app-card [card]="card"></app-card></td>
-                }
-            </tr>
+        <tr>
+            @for(card of cardRow; track card) {
+                <td><app-card [card]="card"></app-card></td>
+            }
+        </tr>
         }
     </table>
 </div>
