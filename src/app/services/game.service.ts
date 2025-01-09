@@ -149,9 +149,10 @@ export class GameService {
     this.secondCard?.cannotBeFlipped();
     this.firstCard = undefined;
     this.secondCard = undefined;
-  }
 
-  private signalIfGameOver(): void {
-    
+    if (this.matchCount() === this.BoardSize) {
+      this.gameOver.set(true);
+      this.gameRunning.set(false);
+    }
   }
 }

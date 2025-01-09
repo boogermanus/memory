@@ -108,4 +108,22 @@ describe('GameService', () => {
         
     expect(card1.IsFlipped && card2.IsFlipped).toBeFalse();
   }));
+
+  it('should signal if game is not running', () => {
+    service.initGame(new GameSettings(2));
+    for(let card of service.Cards) {
+      service.flipCard(card);
+    }
+
+    expect(service.GameRunning()).toBeFalse();
+  });
+
+  it('should signal if game is over', () => {
+    service.initGame(new GameSettings(2));
+    for(let card of service.Cards) {
+      service.flipCard(card);
+    }
+
+    expect(service.GameOver()).toBeTrue();
+  });
 });
