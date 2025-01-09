@@ -27,6 +27,11 @@ export class GameBoardComponent implements OnInit {
   ) {
     this.matches = this.gameService.MatchCount;
     this.attempts = this.gameService.AttemptsCount;
+    effect(() => {
+      if(!this.gameService.GameRunning() && this.gameService.GameOver()) {
+        this.showNewGameDialog();
+      }
+    })
   }
 
   public ngOnInit(): void {
