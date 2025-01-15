@@ -4,9 +4,9 @@
 </div>
 <div class="mt-4">
     <table>
-        @for(cardRow of cards; track cardRow) {
+        @for(cardRow of cards; track $index) {
         <tr>
-            @for(card of cardRow; track card.Id) {
+            @for(card of cardRow; track $index) {
                 <td><app-card [card]="card"></app-card></td>
             }
         </tr>
