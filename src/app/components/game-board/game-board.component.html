@@ -6,7 +6,7 @@
     <table>
         @for(cardRow of cards; track cardRow) {
         <tr>
-            @for(card of cardRow; track card) {
+            @for(card of cardRow; track card.Id) {
                 <td><app-card [card]="card"></app-card></td>
             }
         </tr>

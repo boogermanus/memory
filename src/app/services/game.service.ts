@@ -53,6 +53,9 @@ export class GameService {
     this.gameSettings = settings;
     this.initCards();
     this.gameRunning.set(true);
+    this.gameOver.set(false);
+    this.matchCount.set(0);
+    this.attemptsCount.set(0)
 
   }
 

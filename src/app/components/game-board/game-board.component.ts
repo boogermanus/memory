@@ -51,6 +51,7 @@ export class GameBoardComponent implements OnInit {
     this.gameService.initGame(new GameSettings(boardSize));
     this.gameService.shuffle();
     let cards = this.gameService.Cards;
+    this.cards = [[]]
     for (let row = 0; row < this.gameService.BoardSize; row++) {
       this.cards.push(cards.splice(0, this.gameService.BoardSize));
     }
