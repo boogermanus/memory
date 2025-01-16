@@ -43,8 +43,6 @@ export class GameService {
   private attemptsCount = signal(0)
   public readonly AttemptsCount = this.attemptsCount.asReadonly();
 
-  private numberOfCards = 0;
-
   constructor() {
 
   }
@@ -121,6 +119,7 @@ export class GameService {
     }
 
     this.attemptsCount.set(this.attemptsCount() + 1);
+    
     if (this.firstCard.faceValue !== this.secondCard?.faceValue) {
       this.canFlipCards = false;
       this.flipTimerSubscription.unsubscribe();
