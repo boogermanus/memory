@@ -63,10 +63,9 @@ export class GameService {
     this.matchCount.set(0);
     this.attemptsCount.set(0)
 
-    this.gameTimerSubscription.unsubscribe();
     this.gameTimerValue.set(0);
     this.gameTimerSubscription = this.gameTimer.subscribe({
-      next: (value) => {
+      next: () => {
         this.gameTimerValue.update(time => time + 1)
       }
     })
@@ -81,6 +80,7 @@ export class GameService {
   }
 
   private initCards(): void {
+    this.cards = [];
     const numberOfCards = Math.pow(this.BoardSize, 2);
     let cardFace = 1;
     let cardId = 0;
@@ -172,6 +172,7 @@ export class GameService {
     if (this.matchCount() === (this.cards.length / 2)) {
       this.gameOver.set(true);
       this.gameRunning.set(false);
+      this.gameTimerSubscription.unsubscribe();
     }
   }
 }
