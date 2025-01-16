@@ -35,7 +35,7 @@ export class GameService {
   private matchCount = signal(0);
   public readonly MatchCount = this.matchCount.asReadonly();
 
-  private flipTimer = timer(1500);
+  private flipTimer = timer(750);
   private flipTimerSubscription: Subscription = new Subscription();
 
   public canFlipCards: boolean = true;
@@ -73,7 +73,7 @@ export class GameService {
     let cardId = 0;
     for (let i = 0; i < (numberOfCards / 2); i++) {
       this.cards.push(new Card(cardId++, cardFace.toString()));
-      this.cards.push(new Card(cardId, cardFace.toString()));
+      this.cards.push(new Card(cardId++, cardFace.toString()));
       cardFace++;
     }
   }
