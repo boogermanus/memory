@@ -20,6 +20,7 @@ export class GameBoardComponent implements OnInit {
   public matches!: Signal<number>;
   public attempts!: Signal<number>;
   public time!: Signal<number>;
+  public showCards = false;
 
   // need to have cards here
   constructor(
@@ -41,6 +42,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   private showNewGameDialog() {
+    this.showCards = false;
     if (!this.gameService.GameRunning()) {
       const dialogRef = this.dialog.open(GameSettingsComponent, {disableClose: true});
       dialogRef.afterClosed().subscribe(result => {
@@ -57,6 +59,7 @@ export class GameBoardComponent implements OnInit {
     for (let row = 0; row < this.gameService.BoardSize; row++) {
       this.cards.push(cards.splice(0, this.gameService.BoardSize));
     }
+    this.showCards = true;
   }
 
 }

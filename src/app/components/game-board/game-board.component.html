@@ -5,6 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-4" align="center">Time: {{time()}}</div>
 </div>
+@if(showCards) {
 <div class="mt-4">
     <table>
         @for(cardRow of cards; track $index) {
@@ -16,3 +17,4 @@
         }
     </table>
 </div>
+}
