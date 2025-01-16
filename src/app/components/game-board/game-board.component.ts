@@ -19,6 +19,7 @@ export class GameBoardComponent implements OnInit {
   public cards: Card[][] = [[]];
   public matches!: Signal<number>;
   public attempts!: Signal<number>;
+  public time!: Signal<number>;
 
   // need to have cards here
   constructor(
@@ -27,6 +28,7 @@ export class GameBoardComponent implements OnInit {
   ) {
     this.matches = this.gameService.MatchCount;
     this.attempts = this.gameService.AttemptsCount;
+    this.time = this.gameService.GameTimerValue;
     effect(() => {
       if(!this.gameService.GameRunning() && this.gameService.GameOver()) {
         this.showNewGameDialog();

@@ -43,6 +43,12 @@ export class GameService {
   private attemptsCount = signal(0)
   public readonly AttemptsCount = this.attemptsCount.asReadonly();
 
+  private gameTimer = timer(0, 1000);
+  private gameTimerSubscription: Subscription = new Subscription();
+
+  private gameTimerValue = signal(0);
+  public readonly GameTimerValue = this.gameTimerValue.asReadonly();
+
   constructor() {
 
   }
@@ -57,6 +63,13 @@ export class GameService {
     this.matchCount.set(0);
     this.attemptsCount.set(0)
 
+    this.gameTimerSubscription.unsubscribe();
+    this.gameTimerValue.set(0);
+    this.gameTimerSubscription = this.gameTimer.subscribe({
+      next: (value) => {
+        this.gameTimerValue.update(time => time + 1)
+      }
+    })
   }
 
   private validateGameSettings(settings: GameSettings) {
@@ -124,7 +137,7 @@ export class GameService {
       this.canFlipCards = false;
       this.flipTimerSubscription.unsubscribe();
       this.flipTimerSubscription = this.flipTimer.subscribe({
-        next: () => {
+        complete: () => {
           this.handleMismatch();
         }
       })
