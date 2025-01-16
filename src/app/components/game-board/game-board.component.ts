@@ -40,7 +40,7 @@ export class GameBoardComponent implements OnInit {
 
   private showNewGameDialog() {
     if (!this.gameService.GameRunning()) {
-      const dialogRef = this.dialog.open(GameSettingsComponent);
+      const dialogRef = this.dialog.open(GameSettingsComponent, {disableClose: true});
       dialogRef.afterClosed().subscribe(result => {
         this.startGame(+result.boardSize);
       });
