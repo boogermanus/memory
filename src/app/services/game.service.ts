@@ -11,7 +11,7 @@ export class GameService {
   public readonly SIZE_ERROR = "BoardSize is 0";
   private cards: Card[] = []
   public get Cards(): Card[] {
-    return this.cards;
+    return Array.from(this.cards);
   }
 
   private gameSettings: GameSettings = new GameSettings(0);
@@ -42,6 +42,8 @@ export class GameService {
 
   private attemptsCount = signal(0)
   public readonly AttemptsCount = this.attemptsCount.asReadonly();
+
+  private numberOfCards = 0;
 
   constructor() {
 
@@ -155,7 +157,7 @@ export class GameService {
 
     // this is not working correctly
     // may need to clear stuff out
-    if (this.matchCount() === this.BoardSize) {
+    if (this.matchCount() === (this.cards.length / 2)) {
       this.gameOver.set(true);
       this.gameRunning.set(false);
     }
