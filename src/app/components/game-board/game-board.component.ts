@@ -7,13 +7,12 @@ import { GameSettingsComponent } from '../game-settings/game-settings.component'
 import { GameSettings } from '../../models/game-settings';
 
 @Component({
-  selector: 'app-game-board',
-  standalone: true,
-  imports: [
-    CardComponent
-  ],
-  templateUrl: './game-board.component.html',
-  styleUrl: './game-board.component.css'
+    selector: 'app-game-board',
+    imports: [
+        CardComponent
+    ],
+    templateUrl: './game-board.component.html',
+    styleUrl: './game-board.component.css'
 })
 export class GameBoardComponent implements OnInit {
   public cards: Card[][] = [[]];

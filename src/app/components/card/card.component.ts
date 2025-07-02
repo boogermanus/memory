@@ -4,27 +4,26 @@ import { Card } from '../../models/card';
 import { GameService } from '../../services/game.service';
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css',
-  animations: [
-    trigger('cardFlip', [
-      state('active', style({
-        transform: 'rotateY(180deg)'
-      })),
-      state('inactive', style({
-        transform: 'rotateY(0)'
-      })),
-      transition('active => inactive', [
-        animate('250ms')
-      ]),
-      transition('inactive => active', [
-        animate('250ms')
-      ])
-    ])
-  ]
+    selector: 'app-card',
+    imports: [],
+    templateUrl: './card.component.html',
+    styleUrl: './card.component.css',
+    animations: [
+        trigger('cardFlip', [
+            state('active', style({
+                transform: 'rotateY(180deg)'
+            })),
+            state('inactive', style({
+                transform: 'rotateY(0)'
+            })),
+            transition('active => inactive', [
+                animate('250ms')
+            ]),
+            transition('inactive => active', [
+                animate('250ms')
+            ])
+        ])
+    ]
 })
 export class CardComponent {
   @Input() card!: Card;

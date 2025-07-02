@@ -7,17 +7,16 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { GameSettings } from '../../models/game-settings';
 
 @Component({
-  selector: 'app-game-settings',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatDialogModule
-  ],
-  templateUrl: './game-settings.component.html',
-  styleUrl: './game-settings.component.css'
+    selector: 'app-game-settings',
+    imports: [
+        MatCardModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatDialogModule
+    ],
+    templateUrl: './game-settings.component.html',
+    styleUrl: './game-settings.component.css'
 })
 export class GameSettingsComponent {
   public boardSize: number = 0;
